@@ -1,0 +1,74 @@
+/* Michelin (NKE internal) slide kit. Prompt font, fixed type scale, Michelin palette.
+   Slide bodies use the BODY classes only. The FRAME classes are drawn by kit/frame.py via build.py.
+   Palette: blue #27509B (Michelin blue: titles, ours, main series) · navy #153663 (text, structure, footer)
+            red #BE5350 (current DMAIC phase, problem, before) · green #2E9E5B (after, on target)
+            yellow #FCE500 (Michelin yellow: highlight on navy only) · grey #6B7785 (baseline, not ours) */
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0B2550}
+section{position:relative;width:1920px;height:1080px;background:#F3F8FA;overflow:hidden;font-family:Prompt,sans-serif;color:#153663;page-break-after:always}
+section.dark{color:#fff;background:#0B2550}
+.a{position:absolute}
+.bg{position:absolute;left:0;top:0;width:1920px;height:1080px}
+
+/* ---------- FRAME (frame.py only) ---------- */
+.logo{position:absolute;right:90px;top:30px;height:96px;width:auto}
+.dmaic{position:absolute;left:300px;top:34px;display:flex}
+.dmaic b{display:flex;align-items:center;justify-content:center;width:250px;height:66px;margin-right:-14px;
+  clip-path:polygon(0 0,88% 0,100% 50%,88% 100%,0 100%,12% 50%);background:#234B7D;color:#A9B6C8;font:600 28px Prompt}
+.dmaic b:first-child{clip-path:polygon(0 0,88% 0,100% 50%,88% 100%,0 100%)}
+.dmaic b.on{background:#BE5350;color:#fff;font-weight:700}
+.dmaic.big{left:50%;top:250px;transform:translateX(-50%)}
+.dmaic.big b{width:320px;height:96px;font-size:36px;margin-right:-18px}
+.bar1{position:absolute;left:96px;top:140px;width:46px;height:96px;background:#27509B;clip-path:polygon(40% 0,100% 0,60% 100%,0 100%)}
+.bar2{position:absolute;left:142px;top:140px;width:20px;height:96px;background:#27509B;clip-path:polygon(60% 0,100% 0,40% 100%,0 100%)}
+.title{position:absolute;left:186px;top:136px;width:1500px;font:italic 800 64px Prompt;line-height:1.3;color:#27509B;text-transform:uppercase;white-space:nowrap}
+.subtitle{position:absolute;left:190px;top:222px;width:1500px;font:500 32px Prompt;line-height:1.3;color:#153663;white-space:nowrap}
+.foot{position:absolute;left:0;top:1004px;width:1920px;height:76px;background:#153663}
+.foot .t{position:absolute;left:110px;top:20px;font:italic 800 28px Prompt;color:#fff;text-transform:uppercase;white-space:nowrap}
+.foot .line{position:absolute;left:620px;top:38px;width:1080px;height:2px;background:#5D78A3}
+.foot .n{position:absolute;right:110px;top:18px;font:600 28px Prompt;color:#fff}
+.askbar{position:absolute;left:110px;top:900px;width:1700px;height:80px;background:#fff;border:2px solid #C9D8E6;border-left:12px solid #FCE500;display:flex;align-items:center;gap:22px;padding:0 24px}
+.askbar .k{padding:4px 16px;background:#153663;color:#FCE500;font:italic 800 24px Prompt}
+.askbar .v{font:600 32px Prompt;color:#153663;white-space:nowrap}
+/* cover */
+.ctitle{position:absolute;left:110px;top:380px;width:1700px;font:italic 800 120px Prompt;line-height:1.15;color:#FCE500;text-transform:uppercase}
+.csub{position:absolute;left:110px;top:530px;width:1700px;font:italic 800 96px Prompt;line-height:1.2;color:#fff;text-transform:uppercase}
+.cmeta{position:absolute;left:110px;top:720px;width:1700px;font:500 34px Prompt;color:#C9D6E6}
+.cline{position:absolute;left:110px;top:680px;width:420px;height:6px;background:#FCE500}
+/* divider */
+.dtitle{position:absolute;left:110px;top:430px;width:1700px;font:italic 800 112px Prompt;line-height:1.2;text-align:center;color:#fff;text-transform:uppercase}
+.dsub{position:absolute;left:110px;top:600px;width:1700px;font:500 38px Prompt;color:#C9D6E6;text-align:center}
+
+/* ---------- BODY classes ---------- */
+/* sizes: nothing under .s (24px); the room reads it on a projector */
+.h{font:700 44px Prompt;line-height:1.25}
+.l{font:600 34px Prompt;line-height:1.3}
+.m{font:500 30px Prompt;line-height:1.3}
+.s{font:400 24px Prompt;line-height:1.3;color:#6B7785}
+.q{font:italic 700 32px Prompt;line-height:1.35}
+.big{font:italic 800 96px Prompt;line-height:1.1}
+.huge{font:italic 800 150px Prompt;line-height:1.05}
+.c{text-align:center} .r{text-align:right} .nw{white-space:nowrap}
+/* text colours */
+.blu{color:#27509B} .nav{color:#153663} .red{color:#BE5350} .grn{color:#2E9E5B} .yel{color:#FCE500} .grey{color:#6B7785} .wht{color:#fff}
+/* boxes: corporate = small radius, thin borders */
+.card{position:absolute;border-radius:10px;background:#fff;border:2px solid #C9D8E6}
+.card.blue{background:#EAF1FA;border-color:#27509B}
+.card.bad{background:#FBEDEC;border-color:#BE5350}
+.card.good{background:#EAF6EF;border-color:#2E9E5B}
+.card.navy{background:#153663;border-color:#153663;color:#fff}
+.card.dash{border-style:dashed}
+.card.edge{border-left:12px solid #27509B}
+.card.edge.bad{border-left-color:#BE5350} .card.edge.good{border-left-color:#2E9E5B}
+.chip{position:absolute;display:inline-flex;align-items:center;gap:12px;padding:8px 22px;border-radius:6px;background:#EAF1FA;border:2px solid #C9D8E6;color:#153663;font:600 28px Prompt;white-space:nowrap}
+.chip.blu{background:#27509B;border-color:#27509B;color:#fff}
+.chip.nav{background:#153663;border-color:#153663;color:#fff}
+.chip.red{background:#BE5350;border-color:#BE5350;color:#fff}
+.chip.grn{background:#2E9E5B;border-color:#2E9E5B;color:#fff}
+.chip.yel{background:#FCE500;border-color:#FCE500;color:#153663}
+.chip.dash{background:transparent;border-style:dashed;color:#6B7785}
+.chip.tbc{background:#fff;border:2px dashed #BE5350;color:#BE5350}   /* [TBC]: a number we don't have yet */
+.num{position:absolute;display:flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:50%;background:#27509B;color:#fff;font:700 28px Prompt}
+.num.red{background:#BE5350} .num.grn{background:#2E9E5B} .num.nav{background:#153663} .num.grey{background:#B5C0CC;color:#153663}
+.disc{position:absolute;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center}
+.disc.blu{background:#27509B;color:#fff} .disc.red{background:#BE5350;color:#fff} .disc.grn{background:#2E9E5B;color:#fff} .disc.nav{background:#153663;color:#fff} .disc.light{background:#fff;border:3px solid #C9D8E6}

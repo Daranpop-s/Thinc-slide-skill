@@ -14,6 +14,8 @@ sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 from _chrome import base_args, popen, stop
 from concurrent.futures import ThreadPoolExecutor
 D = pathlib.Path(sys.argv[1]).resolve(); W = D / "canva"; W.mkdir(exist_ok=True)
+if (D / "kit" / "PRIVATE").exists() and not (os.environ.get("THINC_DRYRUN") or os.environ.get("THINC_INLINE")):
+    raise SystemExit("This deck's kit is marked PRIVATE (company content): no upload to a public host. Deliver the PDF instead.")
 h = (D / "deck.html").read_text(encoding="utf-8")
 SVG = re.compile(r'<svg class="a" style="left:(\d+)px;top:(\d+)px(;opacity:[\d.]+)?" width="(\d+)" height="(\d+)".*?</svg>', re.S)
 

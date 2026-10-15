@@ -19,6 +19,10 @@ E = html.escape
 THAI = re.compile(r"[฀-๿]")
 SVG = re.compile(r'<svg class="a" style="left:(\d+)px;top:(\d+)px(?:;opacity:[\d.]+)?" width="(\d+)" height="(\d+)".*?</svg>', re.S)
 DIM = ".22"                                     # opacity of the parts that are not in focus on a build-up page
+KF = None                                       # brand frame: <deck>/kit/frame.py overrides the Thinc. frame (e.g. --brand michelin)
+if (D / "kit" / "frame.py").exists():
+    _s = importlib.util.spec_from_file_location("kitframe", D / "kit" / "frame.py")
+    KF = importlib.util.module_from_spec(_s); _s.loader.exec_module(KF)
 
 def lint_body(b):
     errs = []
@@ -66,9 +70,12 @@ def frame(r):
     return f
 
 def page(r, body, label):
-    f = frame(r)
-    tail = f'<div class="outbar"><span class="k">OUTPUT</span><span class="v">{E(r["out"])}</span></div>' if r.get("out") else ""
-    return f'<section data-document-role="page" data-label="{label}">\n' + "\n".join(f) + "\n" + body + "\n" + tail + "\n</section>"
+    if KF:
+        f, tail, cls = KF.frame(r, mod), KF.tail(r, mod), KF.section_class(r)
+    else:
+        f, cls = frame(r), ""
+        tail = f'<div class="outbar"><span class="k">OUTPUT</span><span class="v">{E(r["out"])}</span></div>' if r.get("out") else ""
+    return f'<section data-document-role="page" data-label="{label}"' + (f' class="{cls}"' if cls else "") + '>\n' + "\n".join(f) + "\n" + body + "\n" + tail + "\n</section>"
 
 pages, bad = [], {}
 for r in S:
@@ -78,7 +85,7 @@ for r in S:
     if p.exists(): body = p.read_text(encoding="utf-8")
     elif r.get("kind") == "divider": body = ""
     else: body = '<div class="a l grey" style="left:110px;top:500px">[body missing]</div>'
-    e = lint_head(r) + lint_body(body)
+    e = lint_head(r) + lint_body(body) + (KF.lint_head(r) if KF else [])
     if e: bad[n] = e
     steps = r.get("builds") or 0
     if steps:
