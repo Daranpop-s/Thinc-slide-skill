@@ -11,28 +11,45 @@ You give Claude your content (a run sheet, notes, an old texty deck). It plans o
 See `assets/example-contact.jpg` for a full 34-slide deck it made.
 
 ## What you need
-- A Mac with **Claude Code** (the terminal app or the Code tab in the Claude desktop app). It does not work in plain claude.ai chat: it needs Chrome and a shell on your Mac.
-- Google Chrome in `/Applications` (used to draw the slides).
-- poppler and Pillow. Run these in Terminal once:
+Works on **Mac and Windows** (and Claude's cloud sessions).
+- **Claude Code** (the terminal app or the Code tab in the Claude desktop app), so Claude has a shell. In a cloud session Claude pulls this repo itself.
+- **Python 3** and **Google Chrome** (on Windows, Microsoft Edge also works: it's found automatically). If Chrome lives somewhere unusual, set `CHROME` to its full path.
+- Two Python packages, once:
 
+Mac (Terminal):
 ```bash
-brew install poppler
+python3 -m pip install --user pillow pypdfium2
 ```
 
-```bash
-python3 -m pip install --user pillow
+Windows (PowerShell):
+```powershell
+py -m pip install --user pillow pypdfium2
 ```
 
 - For the Canva step only: the Canva connector turned on in Claude.
 
 ## Install
-Put the zip in your Downloads folder, then run:
-
+Mac (Terminal):
 ```bash
-unzip ~/Downloads/thinc-slides.zip -d ~/.claude/skills/
+git clone https://github.com/Daranpop-s/thinc-slide-skill ~/.claude/skills/thinc-slides
 ```
 
-Restart Claude Code. Check it worked by asking "what skills do you have?" — `thinc-slides` should be in the list.
+Windows (PowerShell):
+```powershell
+git clone https://github.com/Daranpop-s/thinc-slide-skill "$env:USERPROFILE\.claude\skills\thinc-slides"
+```
+
+To update later: `git pull` inside that folder. Restart Claude Code. Check it worked by asking "what skills do you have?" — `thinc-slides` should be in the list.
+
+## Commands (same on both)
+Use `python3` on Mac, `py` on Windows:
+```
+python3 scripts/new_deck.py <deck_dir>     # new deck folder
+python3 scripts/build.py <deck_dir>        # build + lint
+python3 scripts/render.py <deck_dir>       # PDF + PNG pages + contact sheet
+python3 scripts/to_canva.py <deck_dir>     # Canva version (asks first, see below)
+```
+The old `new_deck.sh` / `render.sh` still work on Mac; they just call the Python versions.
 
 ## How to use it
 Just ask. For example:

@@ -6,6 +6,7 @@ usage: python3 build.py <deck_dir> [NN,NN,...]
 <deck_dir>/body/NN.html holds the body of slide NN (written by you or by one agent per slide).
 """
 import re, sys, pathlib, html, importlib.util
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent)); import _chrome  # noqa: utf-8 console on Windows
 
 D = pathlib.Path(sys.argv[1]).resolve()
 only = sys.argv[2].split(",") if len(sys.argv) > 2 else None

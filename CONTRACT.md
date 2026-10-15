@@ -10,7 +10,7 @@ Slides may be screen-shared to each table over Discord (~720p), so everything is
 - Your row in `$D/slides.py` (the dict with `n="NN"`): title, sub, time, out, builds, and the **brief** = what to draw. The brief wins.
 - The frame is already drawn for you: background, "Thinc.", title, subtitle, time chip, OUTPUT bar. **Don't draw any of those.**
 - You write ONLY `$D/body/NN.html`: a fragment of absolutely-positioned elements (no `<html>`, `<section>`, `<style>`, `<script>`).
-- Then run `python3 <skill>/scripts/build.py $D NN`. Fix every `LINT` line until there are none. Don't render with Chrome.
+- Then run `python3 <skill>/scripts/build.py $D NN` (Windows: `py` instead of `python3`). Fix every `LINT` line until there are none. Don't render with Chrome.
 - Reply with one line: `NN done` (+ anything you weren't sure about).
 
 ## Body area
