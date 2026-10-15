@@ -1,0 +1,54 @@
+/* Thinc. slide kit. ONE font (Prompt), fixed type scale.
+   Slide bodies use the BODY classes only. The FRAME classes are drawn by build.py. */
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0B0C10}
+section{position:relative;width:1920px;height:1080px;background:#0B0C10;overflow:hidden;font-family:Prompt,sans-serif;color:#fff;page-break-after:always}
+.a{position:absolute}
+.bg{position:absolute;left:0;top:0;width:1920px;height:1080px}
+
+/* ---------- FRAME (build.py only) ---------- */
+/* Header = one big bold title + optional plain subtitle. No eyebrow, no uppercase, no letter-spacing, no "·". */
+.brand{position:absolute;left:1660px;top:62px;font:700 40px Prompt;letter-spacing:-.5px}
+.title{position:absolute;left:110px;top:84px;width:1450px;font:700 68px Prompt;line-height:1.2;white-space:nowrap}
+.subtitle{position:absolute;left:110px;top:190px;width:1350px;font:400 30px Prompt;color:#C9CDD6;white-space:nowrap}
+.timechip{position:absolute;right:110px;top:190px;padding:8px 22px;border-radius:999px;background:#1A1D26;border:2px solid #2E3340;font:500 26px Prompt;color:#E6E8EE;white-space:nowrap}
+.tracker{position:absolute;right:110px;top:136px;display:flex;gap:10px;align-items:center}
+.tracker i{display:block;width:16px;height:16px;border-radius:50%;background:#2E3340}
+.tracker i.d{background:#6B7280}
+.tracker b{display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;background:#FF8A3D;font:700 22px Prompt;color:#111}
+.outbar{position:absolute;left:110px;top:944px;width:1700px;height:84px;border-radius:20px;background:#13261C;border:2px solid #2F6B47;display:flex;align-items:center;gap:22px;padding:0 26px}
+.outbar .k{padding:6px 16px;border-radius:10px;background:#5BE49B;color:#0B0C10;font:700 22px Prompt}
+.outbar .v{font:600 32px Prompt;white-space:nowrap}
+/* divider / statement slide: big centred words, nothing else */
+.dtitle{position:absolute;left:110px;top:380px;width:1700px;font:700 104px Prompt;line-height:1.25;text-align:center}
+.dsub{position:absolute;left:110px;top:640px;width:1700px;font:500 36px Prompt;color:#C9CDD6;text-align:center}
+
+/* ---------- BODY classes ---------- */
+/* text sizes. Nothing smaller than .s (24px): slides get screen-shared at ~720p */
+.h{font:700 44px Prompt;line-height:1.2}          /* heading inside the body */
+.l{font:600 34px Prompt;line-height:1.25}         /* main label */
+.m{font:500 30px Prompt;line-height:1.3}          /* secondary label */
+.s{font:400 24px Prompt;line-height:1.3;color:#B8BDC9} /* minor sub-label only */
+.q{font:500 32px Prompt;line-height:1.35}         /* quote / spoken line */
+.big{font:700 96px Prompt;line-height:1}          /* key number or key word */
+.huge{font:700 150px Prompt;line-height:1}
+.c{text-align:center} .r{text-align:right} .nw{white-space:nowrap}
+/* colours (text) */
+.or{color:#FF8A3D} .yel{color:#FFB547} .blu{color:#5B9BFF} .grn{color:#5BE49B} .red{color:#FF5C5C} .pink{color:#FF6FB5} .grey{color:#8A90A0} .wht{color:#fff}
+/* boxes */
+.card{position:absolute;border-radius:24px;background:#161922;border:2px solid #2A2F3A}
+.card.hot{background:#2A1A10;border-color:#FF8A3D}
+.card.good{background:#13261C;border-color:#2F6B47}
+.card.bad{background:#2A1416;border-color:#7A2E33}
+.card.blue{background:#121C2E;border-color:#2F4F86}
+.card.dash{border-style:dashed}
+.chip{position:absolute;display:inline-flex;align-items:center;gap:12px;padding:10px 24px;border-radius:999px;background:#1A1D26;border:2px solid #2E3340;font:600 28px Prompt;white-space:nowrap}
+.chip.or{background:#FF8A3D;border-color:#FF8A3D;color:#111}
+.chip.grn{background:#5BE49B;border-color:#5BE49B;color:#111}
+.chip.blu{background:#5B9BFF;border-color:#5B9BFF;color:#111}
+.chip.red{background:#FF5C5C;border-color:#FF5C5C;color:#111}
+.chip.dash{background:transparent;border-style:dashed;color:#C9CDD6}
+.num{position:absolute;display:flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:50%;background:#FF8A3D;color:#111;font:700 28px Prompt}
+.num.blu{background:#5B9BFF} .num.grn{background:#5BE49B} .num.red{background:#FF5C5C} .num.grey{background:#3A3F4B;color:#fff}
+.disc{position:absolute;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center}
+.disc.or{background:#FF8A3D;color:#111} .disc.blu{background:#5B9BFF;color:#111} .disc.grn{background:#5BE49B;color:#111} .disc.red{background:#FF5C5C;color:#111} .disc.dark{background:#161922;border:3px solid #2E3340}
