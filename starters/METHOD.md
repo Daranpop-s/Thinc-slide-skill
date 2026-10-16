@@ -70,3 +70,12 @@ Learned from Seven's *Thinc. Support Team Recruitment Workshop* ("High-Stakes Pe
 | 10 | **Show-off!**: presentation round | divider |
 
 Rules: everything a team needs to work without asking (mission, questions, sources, rules, time) must be on a slide they can look back at; the phase screen is always visible; assessment criteria are stated up front ("คำตอบเหล่านี้จะถูกนำไปประเมิน"); keep it warm ("Have fun!", "พี่ๆ แค่อยากรู้จักเรามากขึ้น").
+
+---
+
+## Patterns added from other decks
+
+- **Framework / canvas concepts** (from *TOC Camp Aug26*, Theory of Change): show the framework as a short map first (start → activity → destination), then its slots as one road with numbered discs (dim build, one slot at a time), then a **real case filled into the same slots** (reveal build). The printable canvas goes in the workshop step, not the explanation.
+- **Agenda as time bars:** one row per block, bar length = minutes, current block bright and the rest at 35%. One slide, no builds.
+- **Final check point as a checklist:** the framework's parts as columns, 2 checks each, re-used by the room when they review each other's work.
+- **Iceberg / levels:** draw the levels once; reveal each level with its example and the matching response on the right.
