@@ -46,11 +46,15 @@ def lint_head(r):
     if len(r.get("title", "")) > 40 and r.get("kind") != "divider": errs.append("title over 40 characters: say the point shorter")
     return errs
 
-def apply_build(body, k):
-    """<div data-b="N"> ... </div> groups: on page k, every group except N==k is dimmed. Wrappers are removed."""
+def apply_build(body, k, reveal=False):
+    """<div data-b="N"> ... </div> groups. Wrappers are removed.
+    dim (default): on page k, group k is bright and every other group is dimmed (focus one part).
+    reveal=True:   on page k, groups 1..k are shown and groups after k are hidden (things appear one by one)."""
     def dim(m):
-        if m.group(1) == str(k): return m.group(2)
-        return re.sub(r'(<(?:div|svg|img)\b[^>]*?style=")([^"]*)(")', lambda t: t.group(1) + t.group(2).rstrip(";") + f";opacity:{DIM}" + t.group(3), m.group(2))
+        n = int(m.group(1))
+        if n == k or (reveal and n < k): return m.group(2)
+        op = "0" if reveal else DIM
+        return re.sub(r'(<(?:div|svg|img)\b[^>]*?style=")([^"]*)(")', lambda t: t.group(1) + t.group(2).rstrip(";") + f";opacity:{op}" + t.group(3), m.group(2))
     return re.sub(r'<div data-b="(\d+)">(.*?)</div><!--/b-->', dim, body, flags=re.S)
 
 def frame(r):
@@ -89,12 +93,21 @@ for r in S:
     if e: bad[n] = e
     steps = r.get("builds") or 0
     if steps:
-        for k in range(1, steps + 1): pages.append(page(r, apply_build(body, k), f"{n}.{k} {E(r['title'])}"))
+        for k in range(1, steps + 1): pages.append(page(r, apply_build(body, k, r.get("reveal")), f"{n}.{k} {E(r['title'])}"))
     else:
         pages.append(page(r, body.replace("<!--/b-->", ""), f"{n} {E(r['title'])}"))
 doc = ('<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="kit/fonts.css">'
        '<link rel="stylesheet" href="kit/kit.css"><style>@page{size:1920px 1080px;margin:0}</style></head><body>\n'
        + "\n".join(pages) + "\n</body></html>")
 (D / "deck.html").write_text(doc, encoding="utf-8")
+# run sheet: when rows carry `min` (minutes on that slide) and/or `say` (what the presenter says / does), write out/runsheet.md
+if any(r.get("min") or r.get("say") for r in S):
+    acc, lines = 0.0, ["| # | Slide | Min | Clock | Presenter |", "|---|---|---|---|---|"]
+    for r in S:
+        if only and r["n"] not in only: continue
+        m = float(r.get("min") or 0); acc += m
+        lines.append(f'| {r["n"]} | {r["title"]} | {m:g} | {acc:g} | {(r.get("say") or "").replace("|", "/")} |')
+    (D / "out").mkdir(exist_ok=True); (D / "out" / "runsheet.md").write_text("\n".join(lines) + f"\n\nTotal: {acc:g} min\n", encoding="utf-8")
+    print(f"runsheet -> out/runsheet.md ({acc:g} min)")
 for k, v in bad.items(): print("LINT", k, *v, sep="\n  ")
 print("pages", len(pages))

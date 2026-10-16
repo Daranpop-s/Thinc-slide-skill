@@ -51,6 +51,10 @@ python3 scripts/to_canva.py <deck_dir>     # Canva version (asks first, see belo
 ```
 The old `new_deck.sh` / `render.sh` still work on Mac; they just call the Python versions.
 
+Options for `new_deck.py`:
+- `--starter workshop`: step-by-step workshop deck (method in `starters/workshop/METHOD.md`, run sheet with a running clock in `out/runsheet.md`).
+- `--brand michelin`: Michelin NKE internal look (private: no Canva upload).
+
 ## How to use it
 Just ask. For example:
 - "Make 10 Thinc slides for our onboarding from this run sheet. Make it visual, not texty."
