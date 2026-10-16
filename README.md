@@ -52,7 +52,7 @@ python3 scripts/to_canva.py <deck_dir>     # Canva version (asks first, see belo
 The old `new_deck.sh` / `render.sh` still work on Mac; they just call the Python versions.
 
 Options for `new_deck.py`:
-- `--starter workshop`: step-by-step workshop deck (method in `starters/workshop/METHOD.md`, run sheet with a running clock in `out/runsheet.md`).
+- `--starter workshop` (teach one concept) or `--starter challenge` (teams solve a case under time): workshop decks (method in `starters/METHOD.md`, run sheet with a running clock in `out/runsheet.md`).
 - `--brand michelin`: Michelin NKE internal look (private: no Canva upload).
 
 ## How to use it

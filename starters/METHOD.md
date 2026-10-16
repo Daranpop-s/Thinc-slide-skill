@@ -1,6 +1,6 @@
-# Workshop method: one hard concept, broken into bites the room can follow
+# Workshop methods (A: teach one concept and B: challenge workshop)
 
-Learned from Seven's Coach by ChAMP decks (WS0 2023/2024, WS101 2025/2026, his E+R=O module).
+Format A (teach one concept). Learned from Seven's Coach by ChAMP decks (WS0 2023/2024, WS101 2025/2026, his E+R=O module).
 A **module** = one concept, 45–80 min, ~40–60 slides. Many slides is GOOD: each slide is one beat (~10 seconds),
 so the room always knows exactly where they are. The slides do the pacing; the presenter does the talking.
 
@@ -49,3 +49,24 @@ Shorter modules keep 3, 4, 6, 8 or 15, 16, 17. Never skip **Key Question**, **on
 - `reveal=True` with `builds=N`: parts appear one by one (groups after k hidden) instead of dimming.
 - `time`: the chip top-right, e.g. "10 นาที" on an activity slide.
 - `out`: the green OUTPUT bar: what each person / group has at the end of the activity.
+
+---
+
+# Format B: Challenge workshop (teams solve a real case, under time, and get assessed)
+
+Learned from Seven's *Thinc. Support Team Recruitment Workshop* ("High-Stakes Performance Assessment"). Use it for recruitment / selection days, hackathon-style sessions, case competitions, team-building with a real output. Here the slides are the **operating screen** of the room: they state the mission, set up teams and rules, then stay up as a big phase clock.
+
+| # | Beat | Slide pattern |
+|---|---|---|
+| 1 | **Title** with the stakes ("High-Stakes Performance Assessment") | divider + one small picture |
+| 2 | **Mission (โจทย์ของเรา)**: one sentence; the part they usually forget highlighted ("และสื่อสารออกมาได้") | big card, one phrase in red / orange |
+| 3 | **What every team must answer**: 4–5 questions per track, side by side; say they will be assessed on it | two columns of numbered questions |
+| 4 | **Answer sheets**: one printable page per track, a box per question (white background, prints well) | handout page, `bg="bright"` or white card |
+| 5 | **Teams**: how many teams and the role mix per team (3 ER + 2 Dreamscape + 1 PR), drawn as tables of avatars coloured by role | team-mix diagram |
+| 6 | **Information you get**: people to interview (problem owner, sponsor) and documents (forms, case booklet), with arrows to the teams | sources → teams |
+| 7 | **Ground rules**: allowed sources (1 AI tool per team + the documents), no phones, one pen colour per person (to see who contributed), process counts more than the answer, help other teams but own your own, "ไม่มีถูกผิด" | rule tiles |
+| 8 | **How to approach this?**: phases with minutes (collect 20, analyse 20, make slides 10, present 2 min / team) | phase road |
+| 9 | **Phase screens**: during each phase the same road with the current phase bright (`builds=N`), left on the projector as the room's clock | build-up of 8 |
+| 10 | **Show-off!**: presentation round | divider |
+
+Rules: everything a team needs to work without asking (mission, questions, sources, rules, time) must be on a slide they can look back at; the phase screen is always visible; assessment criteria are stated up front ("คำตอบเหล่านี้จะถูกนำไปประเมิน"); keep it warm ("Have fun!", "พี่ๆ แค่อยากรู้จักเรามากขึ้น").

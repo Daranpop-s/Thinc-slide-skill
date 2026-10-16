@@ -2,7 +2,7 @@
 
 usage: python3 new_deck.py <deck_dir> [--brand michelin] [--starter workshop]     (Windows: py new_deck.py ...)
 --brand X    look (kit) from brands/X/. Default = Thinc. (kit/ at the repo root).
---starter Y  starter slides + method from starters/Y/ (slides.py, body/, METHOD.md). Default = the brand's template/.
+--starter Y  starter slides from starters/Y/ (workshop | challenge) + starters/METHOD.md. Default = the brand's template/.
 """
 import sys, shutil, pathlib
 def opt(name):
@@ -25,5 +25,6 @@ if not (TPL / "slides.py").exists(): raise SystemExit(f"unknown starter '{starte
 shutil.copy2(TPL / "slides.py", D / "slides.py")
 for f in (TPL / "body").glob("*.html"): shutil.copy2(f, D / "body" / f.name)
 shutil.copy2(SRC / "CONTRACT.md", D / "CONTRACT.md")
-if (TPL / "METHOD.md").exists(): shutil.copy2(TPL / "METHOD.md", D / "METHOD.md")
+for m in (TPL / "METHOD.md", SK / "starters" / "METHOD.md"):          # starter-specific first, else the shared method
+    if starter and m.exists(): shutil.copy2(m, D / "METHOD.md"); break
 print(f"deck ready ({brand or 'thinc'}{' + ' + starter if starter else ''}): {D}  (edit slides.py, write body/NN.html, then build + render)")
